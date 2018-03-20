@@ -91,6 +91,7 @@ class ContactHelper:
 
     def select_first_contact(self):
         wd = self.app.wd
+        self.open_home_page()
         wd.find_element_by_name("selected[]").click()
 
     def delete_first_contact(self):
@@ -102,12 +103,18 @@ class ContactHelper:
 
     def create(self, group_contact):
         wd = self.app.wd
+        self.open_home_page()
         # init contact creation
         wd.find_element_by_link_text("add new").click()
         self.fill_contact_form(group_contact)
         # enter
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         self.return_to_home_page()
+
+    def open_home_page(self):
+        wd = self.app.wd
+        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("add")) > 0):
+            wd.find_element_by_link_text("home").click()
 
     def fill_contact_form(self, group_contact):
         wd = self.app.wd
