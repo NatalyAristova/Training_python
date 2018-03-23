@@ -11,8 +11,7 @@ class ContactHelper:
 
     def return_to_home_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("add")) > 0):
-            wd.find_element_by_link_text("home page").click()
+        wd.find_element_by_link_text("home page").click()
 
     def modify_first_contact(self, new_contact_data):
         wd = self.app.wd
