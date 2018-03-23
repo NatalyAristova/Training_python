@@ -15,6 +15,7 @@ class ContactHelper:
 
     def modify_first_contact(self, new_contact_data):
         wd = self.app.wd
+        self.open_home_page()
         self.select_first_contact()
         self.button_Edit()
         self.fill_contact_form(new_contact_data)
@@ -91,11 +92,12 @@ class ContactHelper:
 
     def select_first_contact(self):
         wd = self.app.wd
-        self.open_home_page()
         wd.find_element_by_name("selected[]").click()
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.open_home_page()
+        self.select_first_contact()
         # submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
