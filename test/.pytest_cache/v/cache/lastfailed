@@ -1,3 +1,4 @@
 {
+  "test_add_contact.py::test_add_empty_contact": true,
   "test_edit_contact.py::test_edit_contact": true
 }
