@@ -1,3 +1,5 @@
+from sys import maxsize
+
 
 class Group_contact:
 
@@ -21,3 +23,15 @@ class Group_contact:
         self.phone2=phone2
         self.notes=notes
         self.id = id
+
+    def __repr__(self):
+        return "%s:%s:%s" % (self.id, self.lastname, self.firstname)
+
+    def __eq__(self, other):
+        return (self.id is None or other.id is None or self.id == other.id) and (self.lastname, self.firstname) == (other.lastname, other.firstname)
+
+    def id_or_max(self):
+        if self.id:
+            return int(self.id)
+        else:
+            return maxsize

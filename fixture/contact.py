@@ -11,7 +11,7 @@ class ContactHelper:
         contacts = []
         for element in wd.find_elements_by_css_selector("tr[name=entry]"):
             cells = element.find_elements_by_tag_name("td")
-            id = cells[0].find_element_by_name("selected[]").get_attribute("value")
+            id = element.find_element_by_name("selected[]").get_attribute("value")
             lastname = cells[1].text
             firstname = cells[2].text
             contacts.append(Group_contact(id=id, lastname=lastname, firstname=firstname))
