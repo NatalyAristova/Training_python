@@ -28,7 +28,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("home page").click()
 
-    def modify_first_contact(self, new_contact_data):
+    def modify_first_contact(self, index, new_contact_data):
         self.modify_contact_by_index(0)
 
     def modify_contact_by_index(self, index, new_contact_data):
