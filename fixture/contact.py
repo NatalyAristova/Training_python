@@ -18,8 +18,11 @@ class ContactHelper:
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 lastname = cells[1].text
                 firstname = cells[2].text
+                address = cells[3].text
                 all_phones = cells[5].text
+                emails = cells[4].text
                 self.contact_cache.append(Group_contact(id=id, lastname=lastname, firstname=firstname,
+                                                        all_emails_from_home_page=emails, address=address,
                                                         all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
 
@@ -55,8 +58,12 @@ class ContactHelper:
         work = wd.find_element_by_name("work").get_attribute("value")
         mobile = wd.find_element_by_name("mobile").get_attribute("value")
         phone2 = wd.find_element_by_name("phone2").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
         return Group_contact(firstname=firstname, lastname=lastname, id=id, home=home,
-                       mobile=mobile, work=work, phone2=phone2)
+                       mobile=mobile, work=work, phone2=phone2, address=address, email=email, email2=email2, email3=email3)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
@@ -70,7 +77,7 @@ class ContactHelper:
                              mobile=mobile, work=work, phone2=phone2)
 
 
-    def modify_first_contact(self, index, new_contact_data):
+    def modify_first_contact(self, new_contact_data):
         self.modify_contact_by_index(0)
 
     def modify_contact_by_index(self, index, new_contact_data):
